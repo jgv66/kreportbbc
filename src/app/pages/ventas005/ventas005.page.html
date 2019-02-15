@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>      
+    <ion-title>Clientes sin visitas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div id="bar_chart_div"></div>
+    <div id="table_div"></div>
+
+    <div class="texto">
+      <p>La informacion aquí descrita corresponde a los datos actuales en el sistema. Si desea revisar individualmente a cada vendedor y sus clientes sin visitar, puede pulsar el botón y seleccionar al vendedor y acceder a su lista de clientes.</p>
+    </div>
+
+    <ion-button expand="block" fill="outline" (click)="toggleList()">
+        <ion-icon name="search"></ion-icon>
+        Informe individual
+    </ion-button>
+
+    <ion-list *ngIf=" lista ">
+      <ion-item  *ngFor="let item of information; let i = index" >
+        <ion-label (click)="ClientesSinVisita()">
+            ({{ item.vendedor }}) {{ item.nombre }}
+        </ion-label>
+        <ion-icon slot="end" name="arrow-forward" ></ion-icon>
+      </ion-item>
+    </ion-list>
+
+</ion-content>

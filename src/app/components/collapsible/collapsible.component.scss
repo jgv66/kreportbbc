@@ -1,0 +1,27 @@
+ion-card-header {
+    position: relative;
+    background-color: rgb(40, 110, 240);
+    border-radius: 15px 15px 0px 0px;
+    ion-icon {
+        position: absolute;
+        right : 1.5rem;
+    }
+}
+
+ion-card-header.collapsed {
+    border-radius: 15px 15px 15px 15px;
+}
+
+// Ref.: https://css-tricks.com/using-css-transitions-auto-dimensions/
+// This stuff matters!
+ion-list {
+    overflow: hidden;
+    transition: max-height 0.5s ease-out; // note that we're transitioning max-height, not height!
+    height: auto;
+    max-height: 600px; // still have to hard-code a value!
+    border-radius: 0px 0px 15px 15px;
+}
+
+ion-list.collapsed {
+    max-height: 0;
+}

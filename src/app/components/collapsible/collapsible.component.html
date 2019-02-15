@@ -1,0 +1,21 @@
+
+<ion-card>
+    
+    <ion-card-header color="primary" (click)="toggleCollapsible()" [ngClass]="{ 'collapsed': collapsed }">
+        <ion-label>
+          {{itemes[0].titulo}}
+          <ion-icon [name]="(collapsed) ? 'arrow-forward' : 'arrow-down'"></ion-icon>
+        </ion-label>
+    </ion-card-header>
+      
+    <ion-list [ngClass]="{ 'collapsed': collapsed }" lines="none">      
+      
+      <ion-item *ngFor="let item of itemes" detail (click)="navigateTo(item.page)" >
+        <ion-label>
+          {{item.item}} 
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+
+  </ion-card>

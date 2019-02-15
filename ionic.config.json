@@ -1,0 +1,7 @@
+{
+  "name": "KReportBBC",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

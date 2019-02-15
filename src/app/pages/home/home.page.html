@@ -1,0 +1,36 @@
+
+<ion-header  translucent="true">
+  <ion-toolbar>
+    <ion-title>KReport BabyCenter v1.0</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row class="logo-cliente">
+      <ion-img src="assets/imgs/babycenter_bee.png"></ion-img>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-list no-lines>
+        <ion-item>
+          <ion-icon slot='start' name='mail'></ion-icon>
+          <ion-input type="text" placeholder="Email" [(ngModel)]="email" clearInput ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot='start' name='key'></ion-icon>
+          <ion-input type="password" placeholder="Password" [(ngModel)]="pssw" clearInput></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+  
+  <ion-button color="secondary" size='large' expand='block' (click)="doLogin()">Ingresar</ion-button>
+
+  <ion-row class="logo-kinetik">
+    <img src="assets/imgs/logo-kinetik.png">
+  </ion-row>
+
+</ion-content>
+
