@@ -12,10 +12,14 @@
   </ion-header>
   
   <ion-content padding >
-  
-      <div id="bar_chart_div" style="width: 1000px; height: 500px;" no-padding></div>
-      <div id="table_div"></div>
 
-      <div id="ejemplo"></div>
-      
+    <div class="texto">
+      <p>Los 'Movimientos' corresponden a la cantidad de documentos de venta realizados en la sucursal y compete al dato del sistema en este momento. 
+         El dato del período anterior hace referencia hasta el mismo día cerrado del mes en curso del período {{ ano_anterior.toFixed(0).toString() }}. 
+         La fecha de inicio del período anterior podría tener un desface debido al dia calendario.</p>
+    </div>
+  
+    <div id="bar_chart_div" style="width: 350px; height: 500px;" no-padding></div>
+    <div id="table_div"></div>
+
   </ion-content>

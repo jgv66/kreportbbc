@@ -3,12 +3,16 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Facturación anual sucursales</ion-title>
+    <ion-title>Facturación anual</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
+    <div class="texto">
+        <p>La facturación anual actual, corresponde al dato del sistema en este momento. La facturación del período anterior hace referencia hasta el mismo día cerrado del mes en curso del período {{ ano_anterior.toFixed(0).toString() }}.</p>
+    </div>
+    
     <div id="pie_chart_div"></div>
     <div id="table_div"></div>
     

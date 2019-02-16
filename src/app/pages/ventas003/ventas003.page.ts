@@ -12,9 +12,11 @@ declare var google;
 export class Ventas003Page implements OnInit {
 
   usuario = '';
+  ano_anterior = (new Date()).getFullYear();
 
   constructor(  private datos: DatosService,
                 private funciones: FuncionesService ) {
+    this.ano_anterior -= 1;
     this.datos.readDatoLocal( 'KRpt_bbc_usuario' ).
       then( dato => { this.usuario = dato; console.log( dato ); } );
    }
@@ -106,17 +108,22 @@ export class Ventas003Page implements OnInit {
       //
       const table = new google.visualization.Table(document.getElementById('table_div'));
       table.draw(data_table, {showRowNumber: false, width: '100%', height: '100%'});
-
+      //
+      eje[0][1] = t[0];
+      eje[0][2] = t[1];
+      //
       const datax = new google.visualization.arrayToDataTable( eje );
       const options = {
-        width: 1000,
-        height: 500,
-        chart: { title: 'Ventas últimas 4 semanas', subtitle: 'Comparando años'},
+        chartArea: { left: '15%', width: '90%', height: '87%' },  /* left: '10%', top: '5%', width: '40%', height: '87%'  */
+        chart: { title: 'Ventas últimas 4 semanas', subtitle: 'Comparando años', },
         legend: { position: 'top', maxLines: 1 },
-        isStacked: true,
+        isStacked: false,
+        hAxis: { title: 'Ventas', minValue: 0 },
+        vAxis: { title: 'Sucursales' }
       };
 
-      const chart = new google.charts.Bar(document.getElementById('bar_chart_div'));
+      // const chart = new google.charts.Bar(document.getElementById('bar_chart_div'));
+      const chart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
       chart.draw(datax, options);
 
     }

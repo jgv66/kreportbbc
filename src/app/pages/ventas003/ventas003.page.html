@@ -8,8 +8,14 @@
 </ion-header>
 
 <ion-content padding>
-  
-    <div id="bar_chart_div"></div>
-    <div id="table_div"></div>
+
+  <div class="texto">
+      <p>Las ventas graficadas correspondientes al período actual y compete al dato del sistema en este momento. 
+         El dato del período anterior hace referencia al mismo día cerrado del mes en curso del período {{ ano_anterior.toFixed(0).toString() }}. 
+         La fecha de inicio del período anterior podría tener un desface debido al dia calendario.</p>
+  </div>
+    
+  <div id="bar_chart_div"  style="width: 350px; height: 500px;" no-padding></div>
+  <div id="table_div"></div>
     
 </ion-content>

@@ -12,9 +12,11 @@ declare var google;
 export class Ventas011Page implements OnInit {
 
   usuario = '';
+  ano_anterior = (new Date()).getFullYear();
 
   constructor(  private datos: DatosService,
                 private funciones: FuncionesService ) {
+    this.ano_anterior -= 1;
     this.datos.readDatoLocal( 'KRpt_bbc_usuario' ).
       then( dato => { this.usuario = dato; console.log( dato ); } );
    }
@@ -102,7 +104,7 @@ export class Ventas011Page implements OnInit {
           data_table.addColumn('number', tit0 );
           data_table.addColumn('number', tit1 );
           data_table.addColumn('number', '% Dif.');
-          data_table.addColumn('string', 'Descripción');
+          data_table.addColumn('string', 'Nombre Sucursal_______________');
           data_table.addRows( eje_table );
       const table = new google.visualization.Table(document.getElementById('table_div'));
       // colocar un flecha

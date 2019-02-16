@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { LoadingController } from '@ionic/angular';
-import { tap } from 'rxjs/operators';
-import { Storage } from '@ionic/storage';
+
+import { Injectable }         from '@angular/core';
+import { HttpClient }         from '@angular/common/http';
+import { LoadingController }  from '@ionic/angular';
+import { tap, map }           from 'rxjs/operators';
+import { Observable }         from 'rxjs';
+import { Storage }            from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -60,32 +62,32 @@ export class DatosService {
   }
 
   /* FUNCIONES REMOTAS */
-  getDataEmpresas() {   /* debo cambiarlo por GET */
+  getDataEmpresas(): Observable<any> {   /* debo cambiarlo por GET */
     const body = { datos: { empresa: '01', reporte: 777 }};
     return this.http.post( this.url + '' + this.puerto + '/krpt', body );
   }
 
-  getDataUsuarios() {   /* debo cambiarlo por GET */
+  getDataUsuarios(): Observable<any> {   /* debo cambiarlo por GET */
     const body = { datos: { empresa: '01', reporte: 778 }};
     return this.http.post( this.url + '' + this.puerto + '/krpt', body );
   }
 
-  getDataUser( proceso: any, email: any, clave: any, empresa: any ) {
+  getDataUser( proceso: any, email: any, clave: any, empresa: any ): Observable<any> {
     this.showLoading();
     const datos = { rutocorreo: email, clave: clave, empresa: empresa };
     const body  = { sp: 'ksp_buscarUsuario', datos: datos };
     return this.http.post( this.url + this.puerto + '/' + proceso, body )
-    .pipe( tap( value =>  { if ( this.loading ) { this.loading.dismiss(); } }) );
+                    .pipe( tap( value =>  { if ( this.loading ) { this.loading.dismiss(); } }) );
   }
 
-  getReport( filtros: any ) {
+  getReport( filtros: any ): Observable<any> {
     this.showLoading();
     const body = { datos: filtros };
     return this.http.post( this.url + this.puerto + '/krpt', body )
     .pipe( tap( value => { if ( this.loading ) { this.loading.dismiss(); } }) );
   }
 
-  getVerificar( filtros: any ) {
+  getVerificar( filtros: any ): Observable<any> {
     this.showLoading();
     const body = { datos: filtros };
     return this.http.post( this.url + this.puerto + '/kverifica', body )
